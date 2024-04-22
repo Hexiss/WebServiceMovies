@@ -1,0 +1,206 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API de Gestion de Films",
+      "version": "1.0.0",
+      "description": "Une API RESTful pour gérer les films"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000",
+        "description": "Serveur local"
+      }
+    ],
+    "paths": {
+      "/films": {
+        "get": {
+          "summary": "Récupérer la liste des films",
+          "responses": {
+            "200": {
+              "description": "Succès",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Film"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Créer un nouveau film",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilmInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Création réussie"
+            },
+            "422": {
+              "description": "Validation impossible"
+            }
+          }
+        }
+      },
+      "/films/{id}": {
+        "get": {
+          "summary": "Récupérer un film par son ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "description": "ID du film"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Succès",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Film"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Film non trouvé"
+            }
+          }
+        },
+        "put": {
+          "summary": "Mettre à jour un film par son ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "description": "ID du film"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilmInput"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Mise à jour réussie"
+            },
+            "404": {
+              "description": "Film non trouvé"
+            },
+            "422": {
+              "description": "Validation impossible"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Supprimer un film par son ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "description": "ID du film"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Suppression réussie"
+            },
+            "404": {
+              "description": "Film non trouvé"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Film": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64",
+              "description": "ID du film"
+            },
+            "name": {
+              "type": "string",
+              "description": "Nom du film"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description du film"
+            },
+            "releaseDate": {
+              "type": "string",
+              "format": "date",
+              "description": "Date de sortie du film (format ISO 8601)"
+            },
+            "rating": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5,
+              "description": "Note du film (entre 0 et 5)"
+            }
+          }
+        },
+        "FilmInput": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Nom du film"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description du film"
+            },
+            "releaseDate": {
+              "type": "string",
+              "format": "date",
+              "description": "Date de sortie du film (format ISO 8601)"
+            },
+            "rating": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5,
+              "description": "Note du film (entre 0 et 5)"
+            }
+          }
+        }
+      }
+    }
+  }
+  
