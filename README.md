@@ -1,4 +1,4 @@
-# Web Service de Gestion de Films
+# WebServiceMovies
 
 Ce projet est un Web Service conçu pour gérer des informations sur les films. Il fournit des fonctionnalités CRUD (Create, Read, Update, Delete) pour manipuler les données des films, ainsi qu'une documentation OpenAPI pour explorer les endpoints de l'API.
 
@@ -7,13 +7,13 @@ Ce projet est un Web Service conçu pour gérer des informations sur les films. 
 1. Cloner le dépôt depuis GitHub :
 
     ```bash
-    git clone https://github.com/votre-utilisateur/web-service-films.git
+    git clone https://github.com/votre-utilisateur/WebServiceMovies.git
     ```
 
 2. Installer les dépendances :
 
     ```bash
-    cd web-service-films
+    cd WebServiceMovies
     npm install
     ```
 
@@ -44,3 +44,11 @@ Ce projet est un Web Service conçu pour gérer des informations sur les films. 
 - `POST /films`: Créer un nouveau film.
 - `PUT /films/:id`: Mettre à jour un film existant.
 - `DELETE /films/:id`: Supprimer un film par son ID.
+
+## Lancer des Fixtures
+
+Pour ajouter des données de test dans votre base de données, vous pouvez exécuter la commande suivante :
+
+```bash
+npm run fixtures
+```
