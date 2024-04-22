@@ -52,3 +52,6 @@ Pour ajouter des données de test dans votre base de données, vous pouvez exéc
 ```bash
 npm run fixtures
 ```
+## Auteur
+
+Ce projet a été développé par Alexis Herold.
